@@ -3,13 +3,13 @@ line-length = 60
 
 [tool.isort]
 profile = "black"
-src_paths = ["configs", "core", "dependencies", "models", "repositories", "routers", "schemas", "services"]
+src_paths = ["app/configs", "app/core", "app/dependencies", "app/models", "app/repositories", "app/routers", "app/schemas", "app/services"]
 virtual_env = "env"
 
 [tool.pytest.ini_options]
 pythonpath = [
-  "."
+  "app/*"
 ]
 testpaths = [
-  "__tests__"
+  "app/__tests__"
 ]
