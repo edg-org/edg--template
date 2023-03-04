@@ -1,4 +1,6 @@
 ARG PYTHON_TAG=3.8
+ARG GH_USER=soulbah
+ARG GH_REPO=REPO
 
 FROM python:${PYTHON_TAG} AS builder
 
@@ -13,6 +15,8 @@ WORKDIR /app
 RUN /root/.local/bin/pipenv install --system --deploy --ignore-pipfile
 
 FROM tiangolo/uvicorn-gunicorn-fastapi:python${PYTHON_TAG}-slim
+
+LABEL org.opencontainers.image.source=https://github.com/${GH_USER}/${GH_REPO}
 
 RUN apt-get update && apt-get install -y default-libmysqlclient-dev \
  && rm -rf /var/lib/apt/lists/*
