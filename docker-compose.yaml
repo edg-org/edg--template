@@ -10,6 +10,8 @@ services:
         GH_REPO: edg--template
     ports:
       - "8080:80"
+    volumes:
+      - ./app:/app
     env_file:
       - .env
     restart: on-failure
