@@ -10,6 +10,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  DB_DATABASE: testdb
+  DB_USER: root
+  DB_PASSWORD: root
 
 jobs:
   build-and-test-app:
@@ -22,6 +25,27 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
+      - name: Make .env file
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_API_VERSION: 0.0.1
+          envkey_APP_NAME: "EDG auth API"
+          envkey_DATABASE_DIALECT: mysql
+          envkey_DATABASE_HOSTNAME: 127.0.0.1
+          envkey_DATABASE_USERNAME: ${{ env.DB_USER }}
+          envkey_DATABASE_PASSWORD: ${{ env.DB_PASSWORD }}
+          envkey_DATABASE_NAME: ${{ env.DB_DATABASE }}
+          envkey_DATABASE_PORT: 3306
+          envkey_DEBUG_MODE: true
+          envkey_GUNICORN_CMD_ARGS: "--reload"
+          file_name: .env
+          fail_on_empty: false
 
       - name: Install pipenv
         run: pip install --user pipenv
