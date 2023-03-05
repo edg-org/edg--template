@@ -1,7 +1,7 @@
 # Many-to-Many Relationship between Books and Authors
 from sqlalchemy import Column, ForeignKey, Table
 
-from models.BaseModel import EntityMeta
+from api.models.BaseModel import EntityMeta
 
 
 book_author_association = Table(

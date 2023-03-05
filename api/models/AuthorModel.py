@@ -6,8 +6,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
-from models.BaseModel import EntityMeta
-from models.BookAuthorAssociation import (
+from api.models.BaseModel import EntityMeta
+from api.models.BookAuthorAssociation import (
     book_author_association,
 )
 

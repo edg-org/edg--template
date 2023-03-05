@@ -1,12 +1,12 @@
 from typing import List, Optional
 
 from fastapi import Depends
-from models.AuthorModel import Author
-from models.BookModel import Book
+from api.models.AuthorModel import Author
+from api.models.BookModel import Book
 
-from repositories.AuthorRepository import AuthorRepository
-from repositories.BookRepository import BookRepository
-from schemas.pydantic.BookSchema import (
+from api.repositories.AuthorRepository import AuthorRepository
+from api.repositories.BookRepository import BookRepository
+from api.schemas.pydantic.BookSchema import (
     BookAuthorPostRequestSchema,
     BookSchema,
 )

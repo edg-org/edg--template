@@ -3,13 +3,13 @@ from typing import List, Optional
 from fastapi import Depends
 from sqlalchemy.orm import Session, lazyload
 
-from configs.Database import (
+from api.configs.Database import (
     get_db_connection,
 )
-from models.BookModel import Book
+from api.models.AuthorModel import Author
 
 
-class BookRepository:
+class AuthorRepository:
     db: Session
 
     def __init__(
@@ -22,32 +22,34 @@ class BookRepository:
         name: Optional[str],
         limit: Optional[int],
         start: Optional[int],
-    ) -> List[Book]:
-        query = self.db.query(Book)
+    ) -> List[Author]:
+        query = self.db.query(Author)
 
         if name:
             query = query.filter_by(name=name)
 
         return query.offset(start).limit(limit).all()
 
-    def get(self, book: Book) -> Book:
+    def get(self, author: Author) -> Author:
         return self.db.get(
-            Book, book.id, options=[lazyload(Book.authors)]
+            Author,
+            author.id,
+            options=[lazyload(Author.books)],
         )
 
-    def create(self, book: Book) -> Book:
-        self.db.add(book)
+    def create(self, author: Author) -> Author:
+        self.db.add(author)
         self.db.commit()
-        self.db.refresh(book)
-        return book
+        self.db.refresh(author)
+        return author
 
-    def update(self, id: int, book: Book) -> Book:
-        book.id = id
-        self.db.merge(book)
+    def update(self, id: int, author: Author) -> Author:
+        author.id = id
+        self.db.merge(author)
         self.db.commit()
-        return book
+        return author
 
-    def delete(self, book: Book) -> None:
-        self.db.delete(book)
+    def delete(self, author: Author) -> None:
+        self.db.delete(author)
         self.db.commit()
         self.db.flush()

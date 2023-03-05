@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from unittest import TestCase
 from unittest.mock import create_autospec, patch
 
-from repositories.BookRepository import BookRepository
+from api.repositories.BookRepository import BookRepository
 
 
 class TestBookRepository(TestCase):

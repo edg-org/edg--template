@@ -1,6 +1,6 @@
 [run]
 omit =
-        app/__mocks__/*
-        app/__tests__/*
-        app/**/__init__.py
-        app/main.py
+        api/__mocks__/*
+        api/__tests__/*
+        api/**/__init__.py
+        api/main.py

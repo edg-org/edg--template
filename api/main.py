@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 
-from configs.Environment import get_environment_variables
-from metadata.Tags import Tags
-from models.BaseModel import init
-from routers.v1.AuthorRouter import AuthorRouter
-from routers.v1.BookRouter import BookRouter
+from api.configs.Environment import get_environment_variables
+from api.metadata.Tags import Tags
+from api.models.BaseModel import init
+from api.routers.v1.AuthorRouter import AuthorRouter
+from api.routers.v1.BookRouter import BookRouter
 
 # Application Environment Configuration
 env = get_environment_variables()
