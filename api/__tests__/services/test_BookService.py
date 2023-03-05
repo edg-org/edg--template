@@ -24,7 +24,7 @@ class TestBookService(TestCase):
         )
 
     @patch(
-        "schemas.pydantic.BookSchema.BookSchema",
+        "api.schemas.pydantic.BookSchema.BookSchema",
         autospec=True,
     )
     def test_create(self, BookSchema):
@@ -61,7 +61,7 @@ class TestBookService(TestCase):
         )
 
     @patch(
-        "schemas.pydantic.BookSchema.BookSchema",
+        "api.schemas.pydantic.BookSchema.BookSchema",
         autospec=True,
     )
     def test_update(self, BookSchema):
@@ -80,7 +80,7 @@ class TestBookService(TestCase):
         self.bookRepository.get.assert_called_once()
 
     @patch(
-        "schemas.pydantic.BookSchema.BookAuthorPostRequestSchema",
+        "api.schemas.pydantic.BookSchema.BookAuthorPostRequestSchema",
         autospec=True,
     )
     def test_add_author(self, BookAuthorPostRequestSchema):

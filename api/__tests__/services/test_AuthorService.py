@@ -23,7 +23,7 @@ class TestAuthorService(TestCase):
         )
 
     @patch(
-        "schemas.pydantic.AuthorSchema.AuthorSchema",
+        "api.schemas.pydantic.AuthorSchema.AuthorSchema",
         autospec=True,
     )
     def test_create(self, AuthorSchema):
@@ -60,7 +60,7 @@ class TestAuthorService(TestCase):
         )
 
     @patch(
-        "schemas.pydantic.AuthorSchema.AuthorSchema",
+        "api.schemas.pydantic.AuthorSchema.AuthorSchema",
         autospec=True,
     )
     def test_update(self, AuthorSchema):
