@@ -53,7 +53,7 @@ jobs:
       - name: Run tests
         run: |
           pipenv install --dev
-          pipenv run pytest || exit 0
+          pipenv run pytest
 
   build-and-push-image:
     runs-on: ubuntu-latest
