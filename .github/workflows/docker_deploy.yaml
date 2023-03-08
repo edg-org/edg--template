@@ -17,8 +17,6 @@ jobs:
       contents: read
       packages: write
     needs: test
-    environment:
-      name: docker
     uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
     with:
       registry: ghcr.io
