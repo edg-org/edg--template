@@ -16,11 +16,3 @@ jobs:
     uses: edg-org/edg--ops/.github/workflows/test.yml@develop
     with:
       python_version: '3.9'
-  docker:
-    needs: test
-    environment:
-      name: docker
-    uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
-    with:
-      registry: ${{ env.REGISTRY }}
-      image_name: ${{ env.IMAGE_NAME }}
