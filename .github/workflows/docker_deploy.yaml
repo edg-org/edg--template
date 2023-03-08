@@ -16,7 +16,7 @@ jobs:
     uses: edg-org/edg--ops/.github/workflows/test.yml@develop
     with:
       python_version: '3.9'
-  docker:
+  deploy:
     needs: test
     environment: docker
     uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
