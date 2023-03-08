@@ -18,7 +18,6 @@ jobs:
       python_version: '3.9'
   deploy:
     needs: test
-    environment: docker
     uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
     with:
       registry: ${{ env.REGISTRY }}
