@@ -1,0 +1,26 @@
+name: Create and publish a Docker image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    uses: edg--ops/.github/workflows/test.yml@develop
+    with:
+      python_version: '3.9'
+  docker:
+    needs: test
+    environment:
+      name: docker
+    uses: edg--ops/.github/workflows/docker.yml@develop
+    with:
+      registry: ${{ env.REGISTRY }}
+      image_name: ${{ env.IMAGE_NAME }}
