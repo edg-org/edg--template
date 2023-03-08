@@ -7,10 +7,6 @@ on:
       - main
       - develop
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   test:
     uses: edg-org/edg--ops/.github/workflows/test.yml@develop
@@ -20,5 +16,5 @@ jobs:
     needs: test
     uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
     with:
-      registry: ${{ env.REGISTRY }}
-      image_name: ${{ env.IMAGE_NAME }}
+      registry: ghcr.io
+      image_name: ${{ github.repository }}
