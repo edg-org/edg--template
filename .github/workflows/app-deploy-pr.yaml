@@ -9,6 +9,6 @@ on:
 
 jobs:
   deploy:
-    uses: edg-org/edg--ops/.github/workflows/fastapi-pr.yml@develop
+    uses: edg-org/edg--ops/.github/workflows/fastapi-pr.yml@main
     with:
       python_version: '3.9'
