@@ -1,4 +1,4 @@
-name: Create and publish a Docker image
+name: Deploy application
 
 on:
   workflow_dispatch:
@@ -9,9 +9,9 @@ on:
 
 jobs:
   deploy:
-#    permissions:
-#      contents: read
-#      packages: write
+    permissions:
+      contents: read
+      packages: write
     uses: edg-org/edg--ops/.github/workflows/fastapi.yml@develop
     with:
       registry: ghcr.io
