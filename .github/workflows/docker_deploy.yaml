@@ -8,16 +8,12 @@ on:
       - develop
 
 jobs:
-  test:
-    uses: edg-org/edg--ops/.github/workflows/test.yml@develop
-    with:
-      python_version: '3.9'
-  docker:
-    permissions:
-      contents: read
-      packages: write
-    needs: test
-    uses: edg-org/edg--ops/.github/workflows/docker.yml@develop
+  deploy:
+#    permissions:
+#      contents: read
+#      packages: write
+    uses: edg-org/edg--ops/.github/workflows/fastapi.yml@develop
     with:
       registry: ghcr.io
       image_name: ${{ github.repository }}
+      python_version: '3.9'
